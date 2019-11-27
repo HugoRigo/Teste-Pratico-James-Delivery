@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cerveja_navigation"
+    app:startDestination="@id/listaCervejaFragment">
+
+    <fragment
+        android:id="@+id/listaCervejaFragment"
+        android:name="com.example.hugoanjos.ui.ListaCervejaFragment"
+        android:label="lista_cerveja_fragment"
+        tools:layout="@layout/lista_cerveja_fragment" >
+        <action
+            android:id="@+id/action_listaCervejaFragment_to_detalheCervejaFragment"
+            app:destination="@id/detalheCervejaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalheCervejaFragment"
+        android:name="com.example.hugoanjos.ui.DetalheCervejaFragment"
+        android:label="detalhe_cerveja_fragment"
+        tools:layout="@layout/detalhe_cerveja_fragment" />
+</navigation>
