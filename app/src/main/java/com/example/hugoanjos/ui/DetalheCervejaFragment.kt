@@ -1,22 +1,16 @@
 package com.example.hugoanjos.ui
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.example.hugoanjos.R
-import com.example.hugoanjos.viewmodel.DetalheCervejaViewModel
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.detalhe_cerveja_fragment.*
 
 class DetalheCervejaFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = DetalheCervejaFragment()
-    }
-
-    private lateinit var viewModel: DetalheCervejaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +19,24 @@ class DetalheCervejaFragment : Fragment() {
         return inflater.inflate(R.layout.detalhe_cerveja_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DetalheCervejaViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val bundle = this.arguments
+        if (bundle != null) {
 
+            idFragDetalheCerveja_TextViewNome.text = bundle.getString("nome")
+            idFragDetalheCerveja_TextViewDescricao.text = bundle.getString("descricao")
+            idFragDetalheCerveja_ConstraintLayoutFiltro.visibility = View.VISIBLE
+            Picasso.get().load(bundle.getString("foto")).noFade()
+                .centerInside().fit()
+                .into(idFragDetalheCerveja_ImageViewFoto, object : Callback {
+                    override fun onError(e: Exception?) {
+                    }
+
+                    override fun onSuccess() {
+                        idFragDetalheCerveja_ConstraintLayoutFiltro.visibility = View.GONE
+                    }
+                })
+        }
+    }
 }

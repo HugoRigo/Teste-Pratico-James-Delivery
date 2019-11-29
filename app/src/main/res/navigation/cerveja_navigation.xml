@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/listaCervejaFragment"
         android:name="com.example.hugoanjos.ui.ListaCervejaFragment"
-        android:label="lista_cerveja_fragment"
-        tools:layout="@layout/lista_cerveja_fragment" >
+        android:label="Cervejas"
+        tools:layout="@layout/lista_cerveja_fragment">
         <action
             android:id="@+id/action_listaCervejaFragment_to_detalheCervejaFragment"
             app:destination="@id/detalheCervejaFragment" />
@@ -17,6 +17,16 @@
     <fragment
         android:id="@+id/detalheCervejaFragment"
         android:name="com.example.hugoanjos.ui.DetalheCervejaFragment"
-        android:label="detalhe_cerveja_fragment"
-        tools:layout="@layout/detalhe_cerveja_fragment" />
+        android:label="Detalhes"
+        tools:layout="@layout/detalhe_cerveja_fragment">
+        <argument
+            android:name="foto"
+            app:argType="string" />
+        <argument
+            android:name="nome"
+            app:argType="string" />
+        <argument
+            android:name="descricao"
+            app:argType="string" />
+    </fragment>
 </navigation>
